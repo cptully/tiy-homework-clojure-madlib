@@ -1,13 +1,17 @@
 (ns tiy-homework-clojure-madlib.core)
 
+;; Word wrap function copied from
+;; https://www.rosettacode.org/wiki/Word_wrap#Clojure
 (defn wrap-line [size text]
   (re-seq (re-pattern (str ".{0," size "}\\s"))
           (clojure.string/replace text #"\n" " ")))
 
+;; MadLib function, arguements fill in the blanks
 (defn madlib-albert-einstein [place adjective1 adjective2 female-celebrity
                            male-celebrity noun1 noun2 noun3 plural-noun1
                            plural-noun2 plural-noun3 plural-noun4 plural-profession]
 
+    ;; bind Text to the MadLib assembled from the augments and boiler plate text
     (def text (str "Albert Einstein, the son of " male-celebrity " and " female-celebrity ", "
                    "was born in Ulm, Germany, in 1879. In 1902, he had a job "
                    "as assistant " noun1 " in the Swiss patent office and attended "
@@ -21,9 +25,13 @@
                    "Einstein came to America to take a post at Princeton Institute for "
                    plural-noun4 ", where his theories helped America devise the first "
                    "atomic " noun3 ". There is no question about it: Einstein was "
-                   "one of the most brilliant " plural-profession " of our time."))
+                   "one of the most brilliant " plural-profession " of our time. ")) ;; the space after ..time. seems to be necessary
+
+    ;; snippet from same website to iterate cutting the sting into chunks <= 72 characters
     (doseq [line (wrap-line 72 text)]
       (println line))
   )
+
+;; calling the MadLib function
 (madlib-albert-einstein "Raleigh" "silly" "furry" "Madonna" "Tom Curz" "brick" "car"
                      "tree" "deer" "gorges" "classes" "knives" "trash men")
