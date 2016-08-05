@@ -25,10 +25,12 @@
                    "Einstein came to America to take a post at Princeton Institute for "
                    plural-noun4 ", where his theories helped America devise the first "
                    "atomic " noun3 ". There is no question about it: Einstein was "
-                   "one of the most brilliant " plural-profession " of our time. ")) ;; the space after ..time. seems to be necessary
+                   "one of the most brilliant " plural-profession " of our time."))
+                   ;; the space after ..time. is necessary so that wrap-line can match the last word of the string
+                   ;; since it is matching the space after the chosen length of characters
 
     ;; snippet from same website to iterate cutting the sting into chunks <= 72 characters
-    (doseq [line (wrap-line 72 text)]
+    (doseq [line (wrap-line 60 text)]
       (println line))
   )
 
