@@ -30,7 +30,7 @@
                    ;; since it is matching the space after the chosen length of characters
 
     ;; snippet from same website to iterate cutting the sting into chunks <= 72 characters
-    (doseq [line (wrap-line 60 text)]
+    (doseq [line (wrap-line 72 text)]
       (println line))
   )
 
